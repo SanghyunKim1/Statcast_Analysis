@@ -27,11 +27,18 @@ statcast_df[obj_cols] = statcast_df[obj_cols].astype(str)
 
 # check missing data
 missing_cols = statcast_df.columns[statcast_df.isnull().any()]
+print('------- Number of Missing Data -------')
 print(statcast_df[missing_cols].isnull().sum())
 
 msno.matrix(statcast_df[missing_cols], labels=True, fontsize=12, figsize=(25, 20))
 plt.show()
+msno.bar(statcast_df[missing_cols], labels=True, fontsize=12, figsize=(25, 20))
+plt.show()
+msno.heatmap(statcast_df[missing_cols], labels=True, fontsize=12, figsize=(25, 20))
+plt.show()
 
 missing_df = pd.DataFrame(index=missing_cols)
-missing_df['% Missing Data'] = round(statcast_df[missing_cols].isnull().sum()/len(statcast_df[missing_cols]), 3)
-print(missing_df.sort_values('% Missing Data', ascending=False))
+missing_df['Ratio of Missingness'] = round(statcast_df[missing_cols].isnull().sum()/len(statcast_df[missing_cols]), 6)
+print(missing_df.sort_values('Ratio of Missingness', ascending=False))
+# based on types of missing data and the proportions of missingness in each column,
+# drop data features that are not worth imputation
