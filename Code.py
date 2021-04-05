@@ -19,10 +19,9 @@ print(statcast_df.shape)
 print(statcast_df.dtypes.to_string())
 
 # change data types
-obj_cols = ['batter', 'pitcher', 'zone', 'hit_location', 'balls', 'strikes',
-            'game_year', 'on_3b', 'on_2b', 'on_1b', 'outs_when_up', 'inning',
+obj_cols = ['batter', 'pitcher', 'zone', 'hit_location', 'on_3b', 'on_2b', 'on_1b',
             'fielder_2', 'fielder_3', 'fielder_4', 'fielder_5', 'fielder_6',
-            'fielder_7', 'fielder_8', 'fielder_9', 'sv_id', 'game_pk', 'launch_speed_angle']
+            'fielder_7', 'fielder_8', 'fielder_9', 'sv_id', 'game_pk']
 statcast_df[obj_cols] = statcast_df[obj_cols].astype(str)
 
 # check missing data
